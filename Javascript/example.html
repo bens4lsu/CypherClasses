@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script type="text/javascript" src="/js/vigenere.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+    jQuery(document).ready(function() {  
+        jQuery('#inpKeyphrase').keyup(function(){
+            jQuery('textarea').val('');
+            Vigenere.keyword = jQuery('#inpKeyphrase').val();
+        });
+    
+        jQuery('#taCleartext').keyup(function(){
+            jQuery('#taCyphertext').val(Vigenere.transformString(jQuery('#taCleartext').val()));
+        });
+    
+        jQuery('#taCyphertext').keyup(function(){
+            jQuery('#taCleartext').val(Vigenere.untransformString(jQuery('#taCyphertext').val()));
+        });
+
+    });
+
+    </script>
+
+
+
+    <table style="width:100%; border-style:none;">
+        <tr><td colspan="2" style="border-style:none;">Keyphrase</td></tr>
+        <tr><td colspan="2" style="border-style:none;"><input style="width:90%; margin:0.6em; padding:0.2em;" id="inpKeyphrase" placeholder="PasscodeThatTheyWontGuess"></input></td></tr>
+        <tr><td style="border-style:none;">Clear Text</td><td style="border-style:none;">Crypto-text</td></tr>
+        <tr><td style="border-style:none;"><textarea rows="20" style="width:90%; margin:0.6em; padding:0.2em;" id="taCleartext" placeholder="The quick brown fox jumped over the lazy dogs."></textarea></td>
+            <td style="border-style:none;"><textarea rows="20" style="width:90%; margin:0.6em; padding:0.2em;" id="taCyphertext" placeholder="Ihw silgd bkhdr bck poqhws gngf xal etgc zctl."></textarea></td>
+        </tr>
+    </table>
+
+</body>
+</html>
